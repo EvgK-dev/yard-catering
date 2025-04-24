@@ -1,0 +1,75 @@
+{% load static %}  
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+
+		<link type="text/css" href="{% static 'YardMain/css/null.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/font.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/style.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/header.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/footer.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/slider.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/dropdownmenu.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/form.css' %}" rel="stylesheet" /> 
+        <link type="text/css" href="{% static 'YardMain/css/order_form.css' %}" rel="stylesheet" /> 
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="wrapper">
+			{% block header %}
+			<header class="header">     
+                <a href="{% url 'main' %}" class="header_icon">
+                    <img src="{% static 'YardMain/img/icon_logo.svg' %}" alt="YARD">
+                </a>
+
+                <nav class="header__menu"> 
+                    <ul class="header__list">
+                        <li><a href="{% url 'main' %}">Главная</a></li>
+                        <li><a href="{{services_id}}">Услуги</a></li>
+                        <li><a href="{{food_id}}">Еда</a></li>
+                        <li><a href="{{contact_id}}">Контакты</a></li>
+                        <li><a href="{{comment_id}}">Отзывы</a></li>
+                        <li><a href="{% url 'photo' %}">Фото</a></li>
+                    </ul>
+                </nav> 
+                
+
+                <div class="header_shopping_basket">
+                    <div class="header_basket_count">
+                        <span class="basket_count">0</span>
+                    </div>
+                    <div class="header_basket_img"><img class="basket-img" src="{% static 'YardMain/img/icon_basket.svg' %}" alt="basket"></div>
+                </div>
+
+                <div class="header__burger"> 
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                
+            </header>
+			{% endblock header %}
+
+			
+			{% block main %}
+		
+			{% endblock main %}
+
+            {% block footer %}
+            <footer class="footer">
+                <h3 class="title_h3">(с) Кейтеринг "YARD"</h3>
+                <div class="footer_authors_link">
+                    <a href="" id="textwritter"></a>
+                </div>
+            </footer>
+            {% endblock footer %}
+
+            <script src="{% static 'YardMain/js/scripts.js' %}"></script>             
+		</div>	
+	</body>
+</html>

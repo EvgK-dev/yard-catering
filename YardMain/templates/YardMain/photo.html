@@ -1,0 +1,143 @@
+{% extends 'YardMain/base.html' %}
+
+{% load static %}
+
+{% block main %}
+<main class="main">
+
+    <section class="photo_conteiner">
+
+        <h2 class="title_h2">Наши мероприятия</h2>
+        <h3 class="title_h3">Делимся радостью</h3>
+
+        {% if photos %}
+        <div class="gallery" id="gallery">
+            {% for photo in photos|slice:":30" %}
+            <div class="gallery-item">
+                <div class="content">
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h2 class="title_h2">Фотографий пока нет :( </h2>
+        {% endif %}
+
+    </section>
+
+
+
+    <section class="order_section none">
+        <div class="order_wrapper">
+            <span class="plus_close">+</span>
+            <h2 class="title_h2">Оформление заказа</h2>
+            <h3 class="title_h3">Осталось самое главное</h3>
+
+            {% if prepayment.prepayment_amount %}
+            <ul class="order_info">
+                <li class="order_link_info">ОБРАТИТЕ ВНИМАНИЕ</li>
+                <li class="order_link_info">* Мы работаем по предоплате в сумме не менее 
+                    <span class="prepayment_amount">
+                            {{ prepayment.prepayment_amount }}
+                    </span>
+                    % от заказа.
+                </li>
+                <li class="order_link_info">* При отмене заказа менее чем за 1 сутки до оговоренной даты, предоплата не возвращается.</li>
+                <li class="order_link_info">* Производя оплату - Вы соглашаетесь с указанными условиями.</li>
+            </ul> 
+            {% endif %}
+
+            {% if bankNumber.account_number %}
+            <ul class="order_info">
+                <li class="order_link_info">СПОСОБ ВНЕСЕНИЯ ПРЕДОПЛАТЫ</li>
+                <li class="order_link_info">1. Пополнить счет через ЕРИП: 
+                    <br>Банковские и финансовые услуги -> Банки, НКФО -> Альфа-Банк -> 
+                    <br>пополнение счета -> 
+                    <button onclick="copyToClipboard()" class="booking_erip">{{ bankNumber.account_number }}</button>
+                </li>
+                <li class="order_link_info">2. Связаться с нами по указанным на сайте контактам.</li>
+            </ul>
+            {% endif %}
+
+
+            <form class="form_order" action="{% url 'submit_yard' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="order_form_wrapper">
+                    <div class="food_list_conteiner">
+                        <h3 class="title_from_form">Ваш заказ!</h3>
+                        
+                        <div class="food_list">
+                            <!--                            -->
+                        </div>
+
+                        <div class="total_price">
+                            Общая стоимость:
+                            <span class="total_price_cost">0</span>
+                            <span>руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="order_form_data none">
+                        <h3 class="title_from_form">Заполните форму!</h3>
+
+
+                        <div class="none">
+                            <input  type="text" id="order_list" name="order_list" value="" required><br>
+                        </div>
+
+                        <div class="date_conteiner">
+                            <div class="">
+                                <label for="date">Дата:</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            
+                            <div class="">
+                                <label for="time">Время:</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+                        {% if prepayment.prepayment_amount %}
+                        <div class="prepayment_info_conteiner">      
+                            <div class="prepayment_info_block">
+                                <label for="prepayment">Размер предоплаты:</label>
+                                <input class="prepayment" type="text" id="prepayment" name="prepayment" value=""  readonly>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="custom-file-input">
+                            <p>Загрузите чек на оплату (если он есть):</p>
+                            <input type="file" id="fileAttachment" name="fileAttachment" class="custom-file-input-field">
+                            <label class="custom-file-button" for="fileAttachment">Выбрать файл</label>
+                            <span class="file-name"></span>
+                        </div>
+
+            
+                        <div class="label_block">
+                            <label for="userName">Введите свое имя:</label>
+                            <input type="text" id="userName" name="userName" maxlength="20" required><br>
+                        </div>
+                        <div class="label_block">
+                            <label for="phoneNumber">Введите номер телефона:</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="20" required><br>
+                        </div>
+                        <div class="label_block">
+                            <label for="comment">Комментарий:</label>
+                            <textarea id="comment" name="comment" rows="4" cols="50" maxlength="400"></textarea><br>
+                        </div>
+                        <input class="form_button" type="submit" value="Забронировать">
+                    </div>
+                </div>
+
+            </form>
+
+    </section>
+
+</main>
+
+{% endblock main %}
+
+
+
+

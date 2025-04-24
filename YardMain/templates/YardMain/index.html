@@ -1,0 +1,471 @@
+{% extends 'YardMain/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+            <main class="main">   
+                
+                <section class="catering_main_block">
+                    <div class="catering_main_block_information">
+                        <h2 class="catering_main_block_title">КЕЙТЕРИНГ</h2>
+                        <span class="catering_main_block_logo">🐂</span>
+                        <h1 class="catering_main_block_name">“YARD”</h1>
+                        <div class="catering_main_block_text">
+                            <span>♥ ️Готовим с искренним сердцем !</span>
+                            <span>🍽 Банкеты 🥂 Свадьбы 🍸 Фуршеты </span>
+                            <span>🍴 Мероприятия со вкусом! </span>
+                        </div>
+
+                        <div class="catering_main_block_contacts">
+                            <a href="#"><img src="{% static 'YardMain/img/telegram_icon.svg' %}" alt="telegram"></a>
+                            <a href="tel:+375447789769" class="catering_main_block_contact">+375 (44) 778-97-69</a>
+                        </div>
+
+                        <div class="catering_main_block_contacts">
+                            <a href="https://www.instagram.com/yard_catering?igsh=MThtZXdnZDlmM3N5aw==" target="_blank"><img src="{% static 'YardMain/img/instagram_icon.svg' %}"  alt="instagram"></a>
+                            <a href="https://www.instagram.com/yard_catering?igsh=MThtZXdnZDlmM3N5aw==" class="catering_main_block_contact" target="_blank">instagram</a>
+                        </div>
+                        
+                        <div class="catering_main_block_adres">
+                            <span>Прилесье, ул. Горная, 18</span>
+                            <span>Минск, Беларусь</span>
+                        </div>
+                        
+                    </div>
+                    <img class="catering_main_block_img" src="{% static 'YardMain/img/123.jpg' %}" alt="yard">
+                </section>
+
+                <section class="AdvantageCards">
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/menu.svg' %}" alt="personal_menu">
+                        <span>Индивидуальное <br> меню</span>
+                    </div>  
+
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/lanch.svg' %}" alt="delivery">
+                        <span>Доставка <br> еды</span>
+                    </div>  
+
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/bals.svg' %}" alt="delivery">
+                        <span>Организация <br> мероприятий</span>
+                    </div> 
+
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/people.svg' %}" alt="delivery">
+                        <span>Честные <br> цены</span>
+                    </div> 
+
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/cutlery.svg' %}" alt="delivery">
+                        <span>Работаем <br> 24/7</span>
+                    </div> 
+
+                    <div class="AdvantageCard">
+                        <img src="{% static 'YardMain/img/advanteges/cook.svg' %}" alt="delivery">
+                        <span>В бизнессе <br> с 2013 года</span>
+                    </div> 
+
+
+                </section>
+
+                <section class="about_us">
+                    <div class="about_us_photo">
+                        <div class="about_us_photo_conteiner about_us_flex_end">
+                            <img src="{% static 'YardMain/img/about/first.svg' %}" alt="photo">
+                            <img src="{% static 'YardMain/img/about/second.svg' %}" alt="photo">
+                        </div>
+                        <div class="about_us_photo_conteiner ">
+                            <img src="{% static 'YardMain/img/about/third.svg' %}" alt="photo">
+                            <img src="{% static 'YardMain/img/about/four.svg' %}" alt="photo">
+                        </div>
+                    </div>
+
+                    <div class="about_us_text">
+                        <h3>Опыт в каждом вкусе</h3>
+                        <h2>НАША ИСТОРИЯ</h2>
+                        <span>С 2013 года мы творим кулинарные шедевры 
+                            и доставляем вкус радости. Наш опыт в мире 
+                            кейтеринга — это не просто годы, это история 
+                            восхищения вкусом и радости наших клиентов. 
+                            Мы гордимся тем, что каждое мероприятие, которое 
+                            мы обслуживали, стало уникальным, 
+                            а каждый гость — частью нашей вкусовой семьи. 
+                            Спасибо, что доверяете нам создание моментов, 
+                            запоминающихся на всю жизнь.
+                        </span>
+                        <a href="https://www.instagram.com/yard_catering/?igsh=MThtZXdnZDlmM3N5aw%3D%3D" target="_blank">Узнать больше про нас</a>
+                    </div>
+
+
+                </section>
+
+                <section class="services_container" id="services_id">
+                    <h2 class="title_h2">Услуги</h2>
+                    <h3 class="title_h3">Обеспечиваем едой Ваши мероприятия</h3>
+
+                    <div class="services_wrapper">
+
+                        {% if services %}
+                            {% for service in services %}
+                                <div class="service" id="service_{{ service.id }}">
+                                    <div id="slider-container">
+                                        <div class="slider" id="slider">
+                                            {% for image in service.serviceimage_set.all %}
+                                                <div class="slide"><img src="{{ image.image.url }}" alt=""></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="pagination" id="pagination"></div>
+                                    </div>
+
+                                    <h4 class="service_title">{{ service.name }}</h4>
+                                    <span class="service_text">
+                                        {{ service.description }}
+                                    </span>
+
+                                    <div class="price_conteiner">
+                                        <div class="price_conteiner">
+                                            <span class="service_price rub">
+                                                {{ service.price_rub }}
+                                            </span>
+                                            <span>р.</span>
+                                            <span class="service_price service_price_cent">
+                                                {{ service.price_kop }}
+                                            </span>
+                                            <span>к.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="button_container">
+                                        <span class="del_count"></span>
+                                        <span class="count">0</span>
+                                        <span class="add_count"></span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3 class="title_h3">Услуги отсутствуют!</h3>
+                        {% endif %}
+
+                    </div>
+                </section>
+
+                <section class="services_container" id="food_id">
+                    <h2 class="title_h2">Меню</h2>
+                    <h3 class="title_h3">Готовим и доставляем</h3>
+
+                    <div class="services_wrapper">
+                        <div class="services_wrapper">
+                            {% if products %}
+                                {% for product in products %}
+                                <div class="service" id="product_{{ product.id }}">
+                                    <div id="slider-container">
+                                        <div class="slider" id="slider">
+                                            {% for image in product.productsimage_set.all %}
+                                                <div class="slide"><img src="{{ image.image.url }}" alt=""></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="pagination" id="pagination"></div>
+                                    </div>
+
+                                    <h4 class="service_title">{{ product.name }}</h4>
+                                    <span class="service_text">
+                                        {{ product.description }}
+                                    </span>
+
+                                    <div class="price_conteiner">
+                                        <div class="price_conteiner">
+                                            <span class="service_price rub">
+                                                {{ product.price_rub }}
+                                            </span>
+                                            <span>р.</span>
+                                            <span class="service_price service_price_cent">
+                                                {{ product.price_kop }}
+                                            </span>
+                                            <span>к.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="button_container">
+                                        <span class="del_count"></span>
+                                        <span class="count">0</span>
+                                        <span class="add_count"></span>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <h3 class="title_h3">Продукты отсутствуют!</h3>
+                            {% endif %}
+                        </div>
+                        
+
+
+
+                    </div>
+                </section>
+
+                <section class="frequent_questions">
+
+                    <div class="questions_text_conteiner">
+                        <h2 class="title_h2">Информация</h2>
+                        <h3 class="title_h3">Часто задаваемые вопросы</h3>
+                        <span>
+                            "Заботимся о каждом вкусе, потому что для нас каждый клиент 
+                            - часть нашей кулинарной семьи."
+                        </span>
+
+                        <img src="{% static 'YardMain/img/faq/faq_icon.svg' %}" alt="faq">
+                    </div>
+
+                    <div class="questions_wrapper">
+                        <div class="faq">
+
+                            {% if faqs %}
+                                {% for faq in faqs %}
+                                    <div class="question">
+                                        <div class="question_conteiner">
+                                            <h3>{{ faq.question }}</h3>
+                                            <span class="plus">+</span>
+                                        </div>
+                                        <div class="answer">
+                                            <p>{{ faq.answer }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <h3 class="title_h3">Вопросы отсутствуют !</h3>
+                            {% endif %}
+
+                            
+                            
+                          </div>
+                          
+                    </div>
+
+
+                </section>
+
+                <section class="feedback_section" >
+                    <img class="feedback_section_background"  src="{% static 'YardMain/img/feedback_background.svg' %}" alt="">
+
+                    <div class="feedback_absolut_conteiner background-animation">
+                        <div class="slogan_block">
+                            <img src="{% static 'YardMain/img/cook.svg' %}" alt="">
+                            <div class="slogan">
+                                <p class="slogan_author">Дмитрий</p>
+                                <h3>Шеф-повар</h3>
+                                <p class="slogan_text">"Вкус, созданный мастерством. 
+                                    <br> Приготовлено c любовью, <br> подано c искусством."
+                                </p>
+                            </div>
+                           
+                        </div>
+    
+                        <div class="feedback_form_conteiner" id="contact_id">
+                            <h3>Есть вопросы?</h3>
+            
+                            <div class="form-container">
+                                <form action="{% url 'send_telegram_message' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" id="name" name="name" placeholder="Введите своё имя" maxlength="20" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <input type="tel" id="phone" name="phone" placeholder="Укажите телефон" maxlength="20" pattern="\d*" title="Номер телефона может содержать только цифры" required>
+                                    </div>
+    
+                                
+                                    <div class="form-group">
+                                        <input type="text" id="comment" name="comment" placeholder="Добавьте комментарий" maxlength="200" required>
+                                    </div>
+    
+                                    
+                                    <button type="submit">отправить</button>
+                                </form>
+                            </div>
+            
+                        </div>
+    
+                        <div class="feedback_block_information">
+                            <h2 class="catering_main_block_title feedback_block_title">КЕЙТЕРИНГ</h2>
+                            <span class="catering_main_block_logo feedback_block_logo">🐂</span>
+                            <h1 class="catering_main_block_name feedback_block_title">“YARD”</h1>
+    
+                            <div class="catering_main_block_contacts">
+                                <a href="tel:+375447789769" class="catering_main_block_contact feedback_block_contact">+375 (44) 778-97-69</a>
+                            </div>
+    
+                            <div class="catering_main_block_contacts">
+                                <a href="#" target="_blank"><img src="{% static 'YardMain/img/telegram_icon.svg' %}" alt=""></a>
+                                <a href="#" class="catering_main_block_contact" target="_blank">Telegram</a>
+                            </div>
+    
+                            <div class="catering_main_block_contacts">
+                                <a href="https://www.instagram.com/yard_catering/?igsh=MThtZXdnZDlmM3N5aw%3D%3D" target="_blank"><img src="{% static 'YardMain/img/instagram_icon.svg' %}" alt=""></a>
+                                <a href="https://www.instagram.com/yard_catering/?igsh=MThtZXdnZDlmM3N5aw%3D%3D" class="catering_main_block_contact" target="_blank">Instagram</a>
+                            </div>
+                            
+    
+                            <div class="catering_main_block_adres">
+                                <span>Прилесье, ул. Горная, 18</span>
+                                <span>Минск, Беларусь</span>
+                            </div>
+    
+                            <div class="catering_main_block_adres">
+                                <span></span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <section class="comment" id="comment_id">
+                    <h2 class="title_h2">Отзывы</h2>
+                    <h3 class="title_h3">Нам важно каждое мнение</h3>
+
+                    <section class="reviews">
+
+                        {% if reviews %}
+                            {% for review in reviews %}
+                            <div class="review_conteiner">
+                                <div class="review_main">
+                                    <div class="review_person">
+                                        <img class="review_person_img" src="{{ review.image.url }}" alt="">
+                                        <p class="review_person_name">{{ review.name }}</p>
+                                        <div class="review_stars">
+                                            <img src="{% static 'YardMain/img/reviews/stars.png' %}" alt="star">
+                                            <img src="{% static 'YardMain/img/reviews/stars.png' %}" alt="star">
+                                            <img src="{% static 'YardMain/img/reviews/stars.png' %}" alt="star">
+                                            <img src="{% static 'YardMain/img/reviews/stars.png' %}" alt="star">
+                                            <img src="{% static 'YardMain/img/reviews/stars.png' %}" alt="star">
+                                        </div>
+                                    </div>
+                                    <div class="review_text">
+                                        <p>{{ review.text }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3 class="title_h3">Нет отзывов !</h3>
+                        {% endif %}
+
+
+
+                    </section>
+
+
+                </section>
+
+                <section class="order_section none">
+                    <div class="order_wrapper">
+                        <span class="plus_close">+</span>
+                        <h2 class="title_h2">Оформление заказа</h2>
+                        <h3 class="title_h3">Осталось самое главное</h3>
+
+                        {% if prepayment.prepayment_amount %}
+                        <ul class="order_info">
+                            <li class="order_link_info">ОБРАТИТЕ ВНИМАНИЕ</li>
+                            <li class="order_link_info">* Мы работаем по предоплате в сумме не менее 
+                                <span class="prepayment_amount">
+                                        {{ prepayment.prepayment_amount }}
+                                </span>
+                                % от заказа.
+                            </li>
+                            <li class="order_link_info">* При отмене заказа менее чем за 1 сутки до оговоренной даты, предоплата не возвращается.</li>
+                            <li class="order_link_info">* Производя оплату - Вы соглашаетесь с указанными условиями.</li>
+                        </ul> 
+                        {% endif %}
+
+                        {% if bankNumber.account_number %}
+                        <ul class="order_info">
+                            <li class="order_link_info">СПОСОБ ВНЕСЕНИЯ ПРЕДОПЛАТЫ</li>
+                            <li class="order_link_info">1. Пополнить счет через ЕРИП: 
+                                <br>Банковские и финансовые услуги -> Банки, НКФО -> Альфа-Банк -> 
+                                <br>пополнение счета -> 
+                                <button onclick="copyToClipboard()" class="booking_erip">{{ bankNumber.account_number }}</button>
+                            </li>
+                            <li class="order_link_info">2. Связаться с нами по указанным на сайте контактам.</li>
+                        </ul>
+                        {% endif %}
+
+
+                        <form class="form_order" action="{% url 'submit_yard' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="order_form_wrapper">
+                                <div class="food_list_conteiner">
+                                    <h3 class="title_from_form">Ваш заказ!</h3>
+                                    
+                                    <div class="food_list">
+
+                                    </div>
+
+                                    <div class="total_price">
+                                        Общая стоимость:
+                                        <span class="total_price_cost">0</span>
+                                        <span>руб.</span>
+                                    </div>
+                                </div>
+    
+                                <div class="order_form_data none">
+                                    <h3 class="title_from_form">Заполните форму!</h3>
+
+
+                                    <div class="none">
+                                        <input  type="text" id="order_list" name="order_list" value="" required><br>
+                                    </div>
+
+                                    <div class="date_conteiner">
+                                        <div class="">
+                                            <label for="date">Дата:</label>
+                                            <input type="date" id="date" name="date" required>
+                                        </div>
+                                        
+                                        <div class="">
+                                            <label for="time">Время:</label>
+                                            <input type="time" id="time" name="time" required>
+                                        </div>
+                                    </div>
+                                    {% if prepayment.prepayment_amount %}
+                                    <div class="prepayment_info_conteiner">      
+                                        <div class="prepayment_info_block">
+                                            <label for="prepayment">Размер предоплаты:</label>
+                                            <input class="prepayment" type="text" id="prepayment" name="prepayment" value=""  readonly>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    <div class="custom-file-input">
+                                        <p>Загрузите чек на оплату (если он есть):</p>
+                                        <input type="file" id="fileAttachment" name="fileAttachment" class="custom-file-input-field">
+                                        <label class="custom-file-button" for="fileAttachment">Выбрать файл</label>
+                                        <span class="file-name"></span>
+                                    </div>
+
+                        
+                                    <div class="label_block">
+                                        <label for="userName">Введите свое имя:</label>
+                                        <input type="text" id="userName" name="userName" maxlength="20" required><br>
+                                    </div>
+                                    <div class="label_block">
+                                        <label for="phoneNumber">Введите номер телефона:</label>
+                                        <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="20" required><br>
+                                    </div>
+                                    <div class="label_block">
+                                        <label for="comment">Комментарий:</label>
+                                        <textarea id="comment" name="comment" rows="4" cols="50" maxlength="400"></textarea><br>
+                                    </div>
+                                    <input class="form_button" type="submit" value="Забронировать">
+                                </div>
+                            </div>
+
+                        </form>
+
+                </section>
+
+            </main>
+
+{% endblock main %}
+

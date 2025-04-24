@@ -1,0 +1,196 @@
+@charset "UTF-8";
+.order_section {
+  position: fixed;
+  overflow-y: auto; 
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 40px 10px;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+@media (max-width: 600px) {
+  .order_section {
+    padding: 0 10px;
+  }
+}
+
+.order_wrapper {
+  width: 100%;
+  position: relative;
+}
+.order_wrapper .plus_close {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  display: inline-block;
+  transform: rotate(45deg);
+  cursor: pointer;
+  font-size: 80px;
+  color: red;
+  transition: all 0.3s ease-in-out;
+}
+.order_wrapper .plus_close:hover {
+  transform: rotate(225deg);
+}
+.order_wrapper .plus_close:active {
+  color: rgb(255, 255, 255);
+  transform: rotate(45deg);
+}
+@media (max-width: 600px) {
+  .order_wrapper .plus {
+    top: 0;
+    right: 0;
+    color: red;
+    position: fixed;
+  }
+  .order_wrapper .plus:hover {
+    color: goldenrod;
+    transform: rotate(225deg);
+  }
+  .order_wrapper .plus:active {
+    color: rgb(255, 255, 255);
+    transform: rotate(45deg);
+  }
+  .order_wrapper h2 {
+    margin-top: 70px;
+  }
+}
+
+.order_info {
+  font-size: 16px;
+  padding: 10px;
+}
+.order_info li:first-child {
+  padding: 10px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 700;
+}
+.order_info li + li {
+  margin: 6px 0;
+}
+
+.order_link_info {
+  line-height: 1.2;
+}
+
+.booking_erip {
+  background-color: goldenrod;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-weight: 700;
+  transition: all 0.5s ease;
+}
+.booking_erip:hover {
+  background-color: black;
+  color: goldenrod;
+  outline: 1px solid goldenrod;
+}
+.booking_erip:active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  outline: 1px solid rgb(255, 255, 255);
+}
+
+.form_order {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order_form_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.food_list_conteiner {
+  min-width: 400px;
+  max-width: 700px;
+  margin-bottom: 20px;
+  min-height: 440px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(112, 112, 112, 0.205);
+  border-radius: 5px;
+  background-color: rgba(65, 65, 65, 0.089);
+}
+@media (max-width: 450px) {
+  .food_list_conteiner {
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+  }
+}
+
+.title_from_form {
+  font-size: 20px;
+  margin: 10px 0 30px;
+}
+
+.food_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.food_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  border: 1px solid rgba(49, 49, 49, 0.582);
+  background-color: rgba(82, 82, 82, 0.356);
+  padding: 5px;
+}
+
+.food_img {
+  width: 140px;
+  height: 140px;
+}
+
+.food_name {
+  display: inline-block;
+  text-transform: uppercase;
+  margin: 10px 0;
+  height: 25px;
+  line-height: 122%;
+}
+
+.button_container .count {
+  font-size: 26px;
+}
+
+.total_price {
+  margin: 20px 0;
+}
+
+.total_price_cost {
+  margin: 0 10px;
+  font-size: 20px;
+  color: goldenrod;
+  text-decoration: underline;
+}
+
+.none {
+  display: none;
+}
+
+.visible {
+  opacity: 1; 
+}

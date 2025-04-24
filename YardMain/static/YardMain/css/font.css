@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../fonts/Balsamiq_Sans/BalsamiqSans-Regular.ttf") format("TrueType");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../fonts/Balsamiq_Sans/BalsamiqSans-Bold.ttf") format("TrueType");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../fonts/Balsamiq_Sans/BalsamiqSans-Italic.ttf") format("TrueType");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url("../fonts/Balsamiq_Sans/BalsamiqSans-BoldItalic.ttf") format("TrueType");
+  font-weight: 700;
+  font-style: italic;
+}
